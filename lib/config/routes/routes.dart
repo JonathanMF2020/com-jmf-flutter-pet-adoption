@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:petadoption/features/register/presentation/pages/register_page.dart';
+
+class AppRoutes {
+  static Route onGenerateRoutes(RouteSettings settings) {
+    switch (settings.name) {
+      case '/':
+        return _materialRoute(const RegisterPage());
+
+      default:
+        //return _materialRoute(const MoviesHome());
+        return _materialRoute(const RegisterPage());
+    }
+  }
+
+  static Route<dynamic> _materialRoute(Widget view) {
+    return MaterialPageRoute(builder: (_) => view);
+  }
+}
