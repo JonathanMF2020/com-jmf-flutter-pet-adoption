@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
-import 'package:petadoption/features/register/data/models/dto/register_dto.dart';
-import 'package:petadoption/features/register/presentation/bloc/register_bloc.dart';
+import 'package:petadoption/features/login/data/models/dto/login_dto.dart';
+import 'package:petadoption/features/login/presentation/bloc/login_bloc.dart';
 
-class RegisterWidget extends StatefulWidget {
-  const RegisterWidget({super.key});
+class LoginWidget extends StatefulWidget {
+  const LoginWidget({super.key});
 
   @override
-  State<RegisterWidget> createState() => _RegisterWidgetState();
+  State<LoginWidget> createState() => _LoginWidgetState();
 }
 
-class _RegisterWidgetState extends State<RegisterWidget> {
-  final TextEditingController _email = TextEditingController();
+class _LoginWidgetState extends State<LoginWidget> {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _username = TextEditingController();
   @override
@@ -34,20 +33,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             child: Column(
               children: [
                 Text(
-                  "Register",
+                  "Login",
                   style: subtitleText(),
                 ),
                 const SizedBox(height: 10.0),
-                TextFormField(
-                  controller: _email,
-                  decoration: customInputDecoration(
-                    hintText: "Enter your email address",
-                    labelText: "Email",
-                    prefixIcon: const Icon(Icons.email),
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                const SizedBox(height: 20.0),
                 TextFormField(
                   controller: _username,
                   decoration: customInputDecoration(
@@ -71,25 +60,25 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   obscureText: true,
                 ),
                 const SizedBox(height: 30.0),
-                BlocBuilder<RegisterBloc, RegisterState>(
+                BlocBuilder<LoginBloc, LoginState>(
                   builder: (_, state) {
-                    if (state is RegisterLoadingService) {
+                    if (state is LoginLoadingService) {
                       return const CircularProgressIndicator();
                     }
                     return ElevatedButton(
                       style: primaryButton,
-                      onPressed: _handleRegister,
+                      onPressed: _handleLogin,
                       child: const Text(
-                        "Register",
+                        "Login",
                         style: TextStyle(color: Colors.white),
                       ),
                     );
                   },
                 ),
-                Text("Already have an account?", style: normalText()),
+                Text("Don't have an account?", style: normalText()),
                 GestureDetector(
-                    onTap: _handleSignUp,
-                    child: Text("Login", style: normalColorUnderLineText())),
+                    onTap: _handleCeretaAc,
+                    child: Text("Sign Up", style: normalColorUnderLineText())),
               ],
             ),
           )
@@ -98,21 +87,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     );
   }
 
-  void _handleRegister() {
-    print("View Available Pets button pressed!");
-    if (_email.text.isNotEmpty &&
-        _password.text.isNotEmpty &&
-        _username.text.isNotEmpty) {
-      BlocProvider.of<RegisterBloc>(context).add(RegisterLoginService(
-          RegisterDto(
-              email: _email.text,
-              password: _password.text,
-              username: _username.text)));
+  void _handleLogin() {
+    if (_password.text.isNotEmpty && _username.text.isNotEmpty) {
+      BlocProvider.of<LoginBloc>(context).add(ClickButtonLoginService(
+          LoginDto(password: _password.text, username: _username.text)));
     }
   }
 
-  void _handleSignUp() {
+  void _handleCeretaAc() {
     Navigator.pushNamedAndRemoveUntil(
-        context, '/login', (Route<dynamic> route) => false);
+        context, '/signup', (Route<dynamic> route) => false);
   }
 }

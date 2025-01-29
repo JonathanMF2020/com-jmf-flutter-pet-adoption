@@ -38,6 +38,27 @@ TextStyle subtitleText() {
   );
 }
 
+TextStyle normalText() {
+  return const TextStyle(
+    fontSize: 13, // Tamaño de la fuente
+    fontWeight: FontWeight.normal, // Grosor de la fuente
+    color: Colors.black, // Color del texto
+    letterSpacing: 1.2, // Espaciado entre letras
+    fontFamily: 'Roboto', // Fuente personalizada (si usas una)
+  );
+}
+
+TextStyle normalColorUnderLineText() {
+  return const TextStyle(
+    fontSize: 13, // Tamaño de la fuente
+    fontWeight: FontWeight.normal, // Grosor de la fuente
+    color: Colors.blueAccent, // Color del texto
+    letterSpacing: 1.2, // Espaciado entre letras
+    fontFamily: 'Roboto',
+    decoration: TextDecoration.underline, // Fuente personalizada (si usas una)
+  );
+}
+
 ButtonStyle primaryButton = ElevatedButton.styleFrom(
   backgroundColor: Colors.blueAccent, // Color de fondo
   shape: RoundedRectangleBorder(
