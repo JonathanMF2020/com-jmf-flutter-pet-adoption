@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:petadoption/config/routes/routes.dart';
 import 'package:petadoption/core/bloc/simple_bloc_observer.dart';
+import 'package:petadoption/features/home/presentation/pages/home_pages.dart';
 import 'package:petadoption/features/login/presentation/bloc/login_bloc.dart';
 import 'package:petadoption/features/register/presentation/bloc/register_bloc.dart';
 import 'package:petadoption/features/register/presentation/pages/register_page.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         theme: theme(),
         title: 'Pet Adoption',
         onGenerateRoute: AppRoutes.onGenerateRoutes,
-        home: const RegisterPage(),
+        home: HomePage(),
       ),
     );
   }

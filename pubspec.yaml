@@ -26,3 +26,4 @@ flutter:
   assets:
   - .env
   - assets/images/register-image.png
+  - assets/images/cat.png
