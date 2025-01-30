@@ -3,10 +3,10 @@ name: Dart CI
 on:
   push:
     branches:
-      - master  # Cambia esto si tu rama principal tiene otro nombre
+      - master 
   pull_request:
     branches:
-      - master  # Cambia esto si tu rama principal tiene otro nombre
+      - master
 
 jobs:
   analyze:
