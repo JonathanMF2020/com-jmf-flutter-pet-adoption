@@ -18,7 +18,20 @@ jobs:
         with:
           channel: stable
           flutter-version-file: pubspec.yaml
-      - run: flutter --version
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Dart Analyze
+        run: flutter analyze
+
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version-file: pubspec.yaml
       - name: Get dependencies
         run: flutter pub get
       - name: Dart Analyze
