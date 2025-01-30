@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
+import 'package:petadoption/core/constants/route_constants.dart';
 import 'package:petadoption/features/login/data/models/dto/login_dto.dart';
 import 'package:petadoption/features/login/presentation/bloc/login_bloc.dart';
 
@@ -96,6 +97,6 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   void _handleCeretaAc() {
     Navigator.pushNamedAndRemoveUntil(
-        context, '/signup', (Route<dynamic> route) => false);
+        context, routeSignUp, (Route<dynamic> route) => false);
   }
 }

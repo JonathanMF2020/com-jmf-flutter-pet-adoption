@@ -5,13 +5,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/colors/app_colors.dart';
 import 'package:petadoption/features/register/presentation/bloc/register_bloc.dart';
 import 'package:petadoption/features/register/presentation/widget/register_widget.dart';
+import 'package:petadoption/injection_container.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return _listenerAuth(context);
+    return BlocProvider<RegisterBloc>(
+      create: (context) => sl<RegisterBloc>(),
+      child: _listenerAuth(context),
+    );
   }
 
   BlocListener<RegisterBloc, RegisterState> _listenerAuth(

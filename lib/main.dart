@@ -24,22 +24,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<RegisterBloc>(
-          create: (context) => sl<RegisterBloc>(),
-        ),
-        BlocProvider<LoginBloc>(
-          create: (context) => sl<LoginBloc>(),
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: theme(),
-        title: 'Pet Adoption',
-        onGenerateRoute: AppRoutes.onGenerateRoutes,
-        home: HomePage(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: theme(),
+      title: 'Pet Adoption',
+      onGenerateRoute: AppRoutes.onGenerateRoutes,
+      home: HomePage(),
     );
   }
 }

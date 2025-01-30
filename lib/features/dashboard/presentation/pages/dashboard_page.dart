@@ -2,32 +2,31 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/colors/app_colors.dart';
-import 'package:petadoption/core/constants/route_constants.dart';
-import 'package:petadoption/features/login/presentation/bloc/login_bloc.dart';
-import 'package:petadoption/features/login/presentation/widget/login_widget.dart';
+import 'package:petadoption/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:petadoption/features/dashboard/presentation/widgets/dashboard_widget.dart';
 import 'package:petadoption/injection_container.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<LoginBloc>(
-      create: (context) => sl<LoginBloc>(),
+    return BlocProvider<DashboardBloc>(
+      create: (context) => sl<DashboardBloc>(),
       child: _listenerAuth(context),
     );
   }
 
-  BlocListener<LoginBloc, LoginState> _listenerAuth(BuildContext contextBuild) {
-    return BlocListener<LoginBloc, LoginState>(
+  BlocListener<DashboardBloc, DashboardState> _listenerAuth(
+      BuildContext contextBuild) {
+    return BlocListener<DashboardBloc, DashboardState>(
       listener: (context, state) {
-        if (state is LoginSuccess) {
+        if (state is DashboardSuccess) {
           if (kDebugMode) {
-            Navigator.pushNamedAndRemoveUntil(
-                context, routeDashboard, (Route<dynamic> route) => false);
+            print("Listo");
           }
         }
-        if (state is LoginError) {
+        if (state is DashboardError) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text("Ha ocurrido un error")),
           );
@@ -43,12 +42,12 @@ class LoginPage extends StatelessWidget {
   Container _buildBody() {
     return Container(
       margin: const EdgeInsets.all(8),
-      child: BlocBuilder<LoginBloc, LoginState>(
+      child: BlocBuilder<DashboardBloc, DashboardState>(
         builder: (_, state) {
-          if (state is LoginError) {
+          if (state is DashboardError) {
             return const Center(child: Icon(Icons.refresh));
           }
-          return const LoginWidget();
+          return const DashboardWidget();
         },
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
+import 'package:petadoption/core/constants/route_constants.dart';
 import 'package:petadoption/features/register/data/models/dto/register_dto.dart';
 import 'package:petadoption/features/register/presentation/bloc/register_bloc.dart';
 
@@ -113,6 +114,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
   void _handleSignUp() {
     Navigator.pushNamedAndRemoveUntil(
-        context, '/login', (Route<dynamic> route) => false);
+        context, routeLogin, (Route<dynamic> route) => false);
   }
 }

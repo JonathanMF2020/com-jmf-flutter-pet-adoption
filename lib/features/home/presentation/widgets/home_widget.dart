@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/colors/app_colors.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
+import 'package:petadoption/core/constants/route_constants.dart';
+import 'package:petadoption/features/home/presentation/bloc/home_bloc.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
@@ -12,88 +15,99 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Stack(
-        children: [
-          Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: Column(
-                children: [
-                  Image.asset("assets/images/cat.png"),
-                  Center(
-                    child: Text(
-                      "Welcome to Pet Adoption",
-                      style: titleText(),
-                    ),
-                  )
-                ],
-              )),
-          Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                height: MediaQuery.of(context).size.height / 4,
-                padding: const EdgeInsets.all(16),
-                decoration: const BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 10,
-                      spreadRadius: 2,
-                      offset: Offset(0, 5), // Sombra hacia abajo
-                    ),
-                  ],
-                  color: AppColors.primary,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
-                ),
+    return BlocListener<HomeBloc, HomeState>(
+      listener: (context, state) {
+        if (state is HomeSuccess) {
+          if (state.list.length > 0) {
+            print("Se encontraron ${state.list.length} variables");
+            Navigator.pushNamedAndRemoveUntil(
+                context, routeDashboard, (Route<dynamic> route) => false);
+          }
+        }
+      },
+      child: SafeArea(
+        child: Stack(
+          children: [
+            Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      "They also need your help",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    const SizedBox(height: 20.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ElevatedButton(
-                          style: primaryButton,
-                          onPressed: _handleRegister,
-                          child: const Text(
-                            "Register",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        ElevatedButton(
-                          style: primaryButton,
-                          onPressed: _handleSignUp,
-                          child: const Text(
-                            "Login",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )
-                      ],
-                    ),
+                    Image.asset("assets/images/cat.png"),
+                    Center(
+                      child: Text(
+                        "Welcome to Pet Adoption",
+                        style: titleText(),
+                      ),
+                    )
                   ],
-                ),
-              ))
-        ],
+                )),
+            Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 4,
+                  padding: const EdgeInsets.all(16),
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 10,
+                        spreadRadius: 2,
+                        offset: Offset(0, 5), // Sombra hacia abajo
+                      ),
+                    ],
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "They also need your help",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 20.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ElevatedButton(
+                            style: primaryButton,
+                            onPressed: _handleRegister,
+                            child: const Text(
+                              "Register",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: primaryButton,
+                            onPressed: _handleSignUp,
+                            child: const Text(
+                              "Login",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ))
+          ],
+        ),
       ),
     );
   }
 
   void _handleSignUp() {
-    Navigator.pushNamed(context, '/login');
+    Navigator.pushNamed(context, routeLogin);
   }
 
   void _handleRegister() {
-    Navigator.pushNamed(context, '/signup');
+    Navigator.pushNamed(context, routeSignUp);
   }
 }
