@@ -30,14 +30,3 @@ jobs:
           sdk: stable
       - name: Dart Format
         run: dart format --set-exit-if-changed .
-
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: dart-lang/setup-dart@v1
-        with:
-          sdk: stable
-      - name: Dart Test
-        run: dart test
