@@ -16,7 +16,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: stable  # Usa la versión estable de Flutter
+          channel: stable
+          flutter-version-file: pubspec.yaml
       - name: Get dependencies
         run: flutter pub get
       - name: Dart Analyze
@@ -29,7 +30,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: stable  # Usa la versión estable de Flutter
+          channel: stable
+          flutter-version-file: pubspec.yaml  # Usa la versión estable de Flutter
       - name: Get dependencies
         run: flutter pub get
       - name: Dart Format
