@@ -8,27 +8,29 @@ on:
     branches:
       - master  # Cambia esto si tu rama principal tiene otro nombre
 
-jobs:        
+jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: dart-lang/setup-dart@v1
+      - uses: subosito/flutter-action@v2
         with:
-          sdk: stable  # Usa la versión estable de Dart
+          flutter-version: stable  # Usa la versión estable de Flutter
       - name: Get dependencies
         run: flutter pub get
       - name: Dart Analyze
-        run: dart analyze
+        run: flutter analyze
 
   format:
     name: Format
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: dart-lang/setup-dart@v1
+      - uses: subosito/flutter-action@v2
         with:
-          sdk: stable
+          flutter-version: stable  # Usa la versión estable de Flutter
+      - name: Get dependencies
+        run: flutter pub get
       - name: Dart Format
         run: dart format --set-exit-if-changed .
