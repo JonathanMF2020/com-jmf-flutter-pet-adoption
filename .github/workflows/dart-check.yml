@@ -8,7 +8,7 @@ on:
     branches:
       - master  # Cambia esto si tu rama principal tiene otro nombre
 
-jobs:
+jobs:        
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
@@ -17,6 +17,8 @@ jobs:
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: stable  # Usa la versión estable de Dart
+      - name: Get dependencies
+        run: dart pub get
       - name: Dart Analyze
         run: dart analyze
 
