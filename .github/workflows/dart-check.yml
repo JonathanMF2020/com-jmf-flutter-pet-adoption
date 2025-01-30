@@ -18,7 +18,7 @@ jobs:
         with:
           sdk: stable  # Usa la versión estable de Dart
       - name: Get dependencies
-        run: dart pub get
+        run: flutter pub get
       - name: Dart Analyze
         run: dart analyze
 
