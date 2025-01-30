@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:petadoption/config/colors/app_colors.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 
 class DashboardWidget extends StatefulWidget {
@@ -23,7 +22,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
           ),
           GridView.count(
             shrinkWrap: true,
-            physics: ScrollPhysics(),
+            physics: const ScrollPhysics(),
             primary: true,
             padding: const EdgeInsets.all(20),
             mainAxisSpacing: 20,
@@ -44,7 +43,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black26,
             blurRadius: 10,
@@ -53,7 +52,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
           ),
         ],
         color: Colors.grey.shade100,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
@@ -61,10 +60,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
       child: Column(
         children: [
           Image.asset("assets/images/dog.jpg"),
-          Text("Josue"),
-          Text("Age: 2 years"),
-          Text("Breed: Perrito"),
-          Text(
+          const Text("Josue"),
+          const Text("Age: 2 years"),
+          const Text("Breed: Perrito"),
+          const Text(
               "Description: Aiusdhfopiashudfhápsdpfouiaspdoufhiaspkjdfnbapsdjkfbaskjdfbgh")
         ],
       ),
