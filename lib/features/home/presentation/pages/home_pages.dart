@@ -6,6 +6,8 @@ import 'package:petadoption/features/home/presentation/widgets/home_widget.dart'
 import 'package:petadoption/injection_container.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,9 +19,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Container _buildBody() {
-    return Container(
-      child: HomeWidget(),
-    );
+  HomeWidget _buildBody() {
+    return const HomeWidget();
   }
 }

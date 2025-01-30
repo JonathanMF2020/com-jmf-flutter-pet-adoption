@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/colors/app_colors.dart';
@@ -18,8 +19,10 @@ class _HomeWidgetState extends State<HomeWidget> {
     return BlocListener<HomeBloc, HomeState>(
       listener: (context, state) {
         if (state is HomeSuccess) {
-          if (state.list.length > 0) {
-            print("Se encontraron ${state.list.length} variables");
+          if (state.list.isNotEmpty) {
+            if (kDebugMode) {
+              print("Se encontraron ${state.list.length} variables");
+            }
             Navigator.pushNamedAndRemoveUntil(
                 context, routeDashboard, (Route<dynamic> route) => false);
           }

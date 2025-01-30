@@ -100,7 +100,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   }
 
   void _handleRegister() {
-    print("View Available Pets button pressed!");
     if (_email.text.isNotEmpty &&
         _password.text.isNotEmpty &&
         _username.text.isNotEmpty) {

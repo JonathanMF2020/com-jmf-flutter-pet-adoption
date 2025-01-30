@@ -17,7 +17,7 @@ class AppRoutes {
 
       default:
         //return _materialRoute(const MoviesHome());
-        return _materialRoute(HomePage());
+        return _materialRoute(const HomePage());
     }
   }
 

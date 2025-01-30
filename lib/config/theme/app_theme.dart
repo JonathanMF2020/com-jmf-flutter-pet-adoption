@@ -64,9 +64,9 @@ ButtonStyle primaryButton = ElevatedButton.styleFrom(
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(16.0), // Bordes redondeados
   ),
-  padding: EdgeInsets.symmetric(
+  padding: const EdgeInsets.symmetric(
       vertical: 16.0, horizontal: 24.0), // Espaciado interno
-  textStyle: TextStyle(
+  textStyle: const TextStyle(
     fontSize: 18.0,
     fontWeight: FontWeight.bold, // Negrita
   ),
