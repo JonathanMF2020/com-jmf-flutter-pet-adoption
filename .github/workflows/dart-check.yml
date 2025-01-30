@@ -20,7 +20,7 @@ jobs:
           flutter-version-file: pubspec.yaml
       - name: Get dependencies
         run: flutter pub get
-      - name: Dart Analyze
+      - name: Flutter Analyze
         run: flutter analyze
 
   format:
@@ -34,5 +34,5 @@ jobs:
           flutter-version-file: pubspec.yaml
       - name: Get dependencies
         run: flutter pub get
-      - name: Dart Analyze
-        run: flutter analyze
+      - name: Flutter Format
+        run: flutter format --set-exit-if-changed .
