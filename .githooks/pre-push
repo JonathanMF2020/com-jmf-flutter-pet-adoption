@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Ejecuta el análisis de código de Flutter
+echo "Ejecutando 'flutter analyze'..."
+flutter analyze
+
+# Verifica el resultado del análisis
+if [ $? -ne 0 ]; then
+  echo "❌ Se encontraron errores en el análisis de código. Abortando push."
+  exit 1
+fi
+
+echo "Verificando formato del código con 'dart format'..."
+dart format --set-exit-if-changed .
+if [ $? -ne 0 ]; then
+  echo "❌ El formato del código no es correcto. Abortando push."
+  exit 1
+fi
+
+echo "✅ Análisis de código exitoso. Continuando con el push..."
+exit 0
