@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:petadoption/config/icons/app_icons.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 
 class DashboardWidget extends StatefulWidget {
@@ -18,10 +17,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
           Expanded(
             child: PageView(
               scrollDirection: Axis.vertical,
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 8, right: 8),
+                  margin: const EdgeInsets.only(left: 8, right: 8),
                   child: Column(
                     children: [
                       Text(
@@ -29,7 +28,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         style: titleText(),
                       ),
                       Container(
-                          margin: EdgeInsets.only(left: 8, right: 8),
+                          margin: const EdgeInsets.only(left: 8, right: 8),
                           child: Image.asset("assets/images/conejo.jpg")),
                       const SizedBox(height: 30.0),
                       Row(
@@ -44,7 +43,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       const SizedBox(height: 30.0),
                       Card(
                         child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -64,7 +63,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width / 2 -
                                             20,
@@ -74,7 +73,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                       textAlign: TextAlign.start,
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width / 2 -
                                             20,
@@ -87,7 +86,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 ],
                               ),
                               const SizedBox(height: 10.0),
-                              Container(
+                              SizedBox(
                                 width: MediaQuery.of(context).size.width - 16,
                                 child: Text(
                                   "Breed: Narna",
@@ -103,7 +102,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 8, right: 8),
+                  margin: const EdgeInsets.only(left: 8, right: 8),
                   child: Column(
                     children: [
                       Text(
@@ -111,7 +110,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         style: titleText(),
                       ),
                       Container(
-                          margin: EdgeInsets.only(left: 8, right: 8),
+                          margin: const EdgeInsets.only(left: 8, right: 8),
                           child: Image.asset("assets/images/conejo.jpg")),
                       const SizedBox(height: 30.0),
                       Row(
@@ -126,7 +125,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       const SizedBox(height: 30.0),
                       Card(
                         child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -146,7 +145,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width / 2 -
                                             20,
@@ -156,7 +155,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                       textAlign: TextAlign.start,
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width / 2 -
                                             20,
@@ -169,7 +168,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 ],
                               ),
                               const SizedBox(height: 10.0),
-                              Container(
+                              SizedBox(
                                 width: MediaQuery.of(context).size.width - 16,
                                 child: Text(
                                   "Breed: Narna",
@@ -185,7 +184,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 8, right: 8),
+                  margin: const EdgeInsets.only(left: 8, right: 8),
                   child: Column(
                     children: [
                       Text(
@@ -193,7 +192,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         style: titleText(),
                       ),
                       Container(
-                          margin: EdgeInsets.only(left: 8, right: 8),
+                          margin: const EdgeInsets.only(left: 8, right: 8),
                           child: Image.asset("assets/images/conejo.jpg")),
                       const SizedBox(height: 30.0),
                       Row(
@@ -208,7 +207,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       const SizedBox(height: 30.0),
                       Card(
                         child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -228,7 +227,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width / 2 -
                                             20,
@@ -238,7 +237,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                       textAlign: TextAlign.start,
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width / 2 -
                                             20,
@@ -251,7 +250,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 ],
                               ),
                               const SizedBox(height: 10.0),
-                              Container(
+                              SizedBox(
                                 width: MediaQuery.of(context).size.width - 16,
                                 child: Text(
                                   "Breed: Narna",
@@ -267,7 +266,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 8, right: 8),
+                  margin: const EdgeInsets.only(left: 8, right: 8),
                   child: Column(
                     children: [
                       Text(
@@ -275,7 +274,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                         style: titleText(),
                       ),
                       Container(
-                          margin: EdgeInsets.only(left: 8, right: 8),
+                          margin: const EdgeInsets.only(left: 8, right: 8),
                           child: Image.asset("assets/images/conejo.jpg")),
                       const SizedBox(height: 30.0),
                       Row(
@@ -290,7 +289,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       const SizedBox(height: 30.0),
                       Card(
                         child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -310,7 +309,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width / 2 -
                                             20,
@@ -320,7 +319,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                       textAlign: TextAlign.start,
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width / 2 -
                                             20,
@@ -333,7 +332,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                                 ],
                               ),
                               const SizedBox(height: 10.0),
-                              Container(
+                              SizedBox(
                                 width: MediaQuery.of(context).size.width - 16,
                                 child: Text(
                                   "Breed: Narna",
@@ -380,7 +379,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 20),
+              margin: const EdgeInsets.only(top: 20),
               child: Image.asset(
                 url,
                 height: 200,
@@ -392,7 +391,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
             const Text(
                 "Description: Aiusdhfopiashudfhápsdpfouiaspdoufhiaspkjdfnbapsdjkfbaskjdfbgh"),
             Container(
-              margin: EdgeInsets.only(top: 8, bottom: 8),
+              margin: const EdgeInsets.only(top: 8, bottom: 8),
               child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
@@ -403,10 +402,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   }),
             ),
             Container(
-              margin: EdgeInsets.only(top: 8, bottom: 8),
+              margin: const EdgeInsets.only(top: 8, bottom: 8),
               child: ElevatedButton(
                 style: primaryButton,
-                onPressed: () => null,
+                onPressed: () {},
                 child: const Text(
                   "Login",
                   style: TextStyle(color: Colors.white),
@@ -421,13 +420,13 @@ class _DashboardWidgetState extends State<DashboardWidget> {
 
   Container createTag(String tag) {
     return Container(
-      padding: EdgeInsets.only(top: 8, bottom: 8, left: 20, right: 20),
+      padding: const EdgeInsets.only(top: 8, bottom: 8, left: 20, right: 20),
       alignment: Alignment.center,
+      color: Colors.blue,
       child: Text(
         tag,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
-      color: Colors.blue,
     );
   }
 }

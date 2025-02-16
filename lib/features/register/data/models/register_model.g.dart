@@ -11,6 +11,7 @@ RegisterModel _$RegisterModelFromJson(Map<String, dynamic> json) =>
       message: json['message'] as String,
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$RegisterModelToJson(RegisterModel instance) =>
     <String, dynamic>{
       'message': instance.message,
