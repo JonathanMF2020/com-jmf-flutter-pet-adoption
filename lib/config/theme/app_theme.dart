@@ -48,6 +48,26 @@ TextStyle normalText() {
   );
 }
 
+TextStyle normalBoldText() {
+  return const TextStyle(
+    fontSize: 10, // Tamaño de la fuente
+    fontWeight: FontWeight.bold, // Grosor de la fuente
+    color: Colors.black, // Color del texto
+    letterSpacing: 1.2, // Espaciado entre letras
+    fontFamily: 'Roboto', // Fuente personalizada (si usas una)
+  );
+}
+
+TextStyle normalBoldWhiteText() {
+  return const TextStyle(
+    fontSize: 10, // Tamaño de la fuente
+    fontWeight: FontWeight.bold, // Grosor de la fuente
+    color: Colors.white, // Color del texto
+    letterSpacing: 1.2, // Espaciado entre letras
+    fontFamily: 'Roboto', // Fuente personalizada (si usas una)
+  );
+}
+
 TextStyle normalColorUnderLineText() {
   return const TextStyle(
     fontSize: 13, // Tamaño de la fuente

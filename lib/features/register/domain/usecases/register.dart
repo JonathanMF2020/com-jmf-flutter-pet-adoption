@@ -4,9 +4,8 @@ import 'package:petadoption/features/register/data/models/dto/register_dto.dart'
 import 'package:petadoption/features/register/data/models/register_model.dart';
 import 'package:petadoption/features/register/domain/repository/register_repository.dart';
 
-class RegisterUseCase
-    implements UseCase<DataState<RegisterModel>, RegisterDto> {
-  RegisterUseCase(this._registerRepository);
+class Register implements UseCase<DataState<RegisterModel>, RegisterDto> {
+  Register(this._registerRepository);
   final RegisterRepository _registerRepository;
 
   @override

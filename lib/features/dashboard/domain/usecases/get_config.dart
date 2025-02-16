@@ -3,8 +3,8 @@ import 'package:petadoption/core/use_case/use_case.dart';
 import 'package:petadoption/features/dashboard/data/models/config_model.dart';
 import 'package:petadoption/features/dashboard/domain/repository/config_repository.dart';
 
-class ConfigUseCase implements UseCase<DataState<List<ConfigModel>>, void> {
-  ConfigUseCase(this._configRepository);
+class GetConfig implements UseCase<DataState<List<ConfigModel>>, void> {
+  GetConfig(this._configRepository);
   final ConfigRepository _configRepository;
 
   @override

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/core/resources/data_state.dart';
 import 'package:petadoption/features/register/data/models/dto/register_dto.dart';
 import 'package:petadoption/features/register/data/models/register_model.dart';
-import 'package:petadoption/features/register/domain/usecases/register_use_case.dart';
+import 'package:petadoption/features/register/domain/usecases/register.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';
@@ -12,7 +12,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   RegisterBloc(this.registerUseCase) : super(RegisterLoading()) {
     on<RegisterLoginService>(onRegister);
   }
-  final RegisterUseCase registerUseCase;
+  final Register registerUseCase;
 
   Future<void> onRegister(
       RegisterLoginService event, Emitter<RegisterState> emit) async {

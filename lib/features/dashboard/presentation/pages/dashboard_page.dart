@@ -41,17 +41,14 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Container _buildBody() {
-    return Container(
-      margin: const EdgeInsets.all(8),
-      child: BlocBuilder<DashboardBloc, DashboardState>(
-        builder: (_, state) {
-          if (state is DashboardError) {
-            return const Center(child: Icon(Icons.refresh));
-          }
-          return const DashboardWidget();
-        },
-      ),
+  BlocBuilder _buildBody() {
+    return BlocBuilder<DashboardBloc, DashboardState>(
+      builder: (_, state) {
+        if (state is DashboardError) {
+          return const Center(child: Icon(Icons.refresh));
+        }
+        return const DashboardWidget();
+      },
     );
   }
 }

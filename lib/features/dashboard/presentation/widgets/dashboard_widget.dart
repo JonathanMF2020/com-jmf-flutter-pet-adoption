@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petadoption/config/icons/app_icons.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 
 class DashboardWidget extends StatefulWidget {
@@ -12,36 +13,353 @@ class _DashboardWidgetState extends State<DashboardWidget> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: ListView(
+      child: Column(
         children: [
-          Center(
-            child: Text(
-              "For you",
-              style: titleText(),
+          Expanded(
+            child: PageView(
+              scrollDirection: Axis.vertical,
+              physics: ClampingScrollPhysics(),
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: 8, right: 8),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Tomy",
+                        style: titleText(),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(left: 8, right: 8),
+                          child: Image.asset("assets/images/conejo.jpg")),
+                      const SizedBox(height: 30.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          createTag("Alegre"),
+                          createTag("Energico"),
+                          //createTag("Alegre"),
+                          //createTag("Alegre")
+                        ],
+                      ),
+                      const SizedBox(height: 30.0),
+                      Card(
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Description: ",
+                                  style: subtitleText(),
+                                ),
+                              ),
+                              Text(
+                                "El conejo es un mamífero herbívoro de la especie Oryctolagus cuniculus. Se caracteriza por tener un pelaje espeso, orejas largas, patas traseras fuertes y una cola cort",
+                                style: normalText(),
+                              ),
+                              const SizedBox(height: 10.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2 -
+                                            20,
+                                    child: Text(
+                                      "Age: 2 years",
+                                      style: normalBoldText(),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2 -
+                                            20,
+                                    child: Text(
+                                      "Animal Type: Rabbit",
+                                      style: normalBoldText(),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 10.0),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 16,
+                                child: Text(
+                                  "Breed: Narna",
+                                  style: normalBoldText(),
+                                  textAlign: TextAlign.start,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 8, right: 8),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Tomy",
+                        style: titleText(),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(left: 8, right: 8),
+                          child: Image.asset("assets/images/conejo.jpg")),
+                      const SizedBox(height: 30.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          createTag("Alegre"),
+                          createTag("Energico"),
+                          //createTag("Alegre"),
+                          //createTag("Alegre")
+                        ],
+                      ),
+                      const SizedBox(height: 30.0),
+                      Card(
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Description: ",
+                                  style: subtitleText(),
+                                ),
+                              ),
+                              Text(
+                                "El conejo es un mamífero herbívoro de la especie Oryctolagus cuniculus. Se caracteriza por tener un pelaje espeso, orejas largas, patas traseras fuertes y una cola cort",
+                                style: normalText(),
+                              ),
+                              const SizedBox(height: 10.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2 -
+                                            20,
+                                    child: Text(
+                                      "Age: 2 years",
+                                      style: normalBoldText(),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2 -
+                                            20,
+                                    child: Text(
+                                      "Animal Type: Rabbit",
+                                      style: normalBoldText(),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 10.0),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 16,
+                                child: Text(
+                                  "Breed: Narna",
+                                  style: normalBoldText(),
+                                  textAlign: TextAlign.start,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 8, right: 8),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Tomy",
+                        style: titleText(),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(left: 8, right: 8),
+                          child: Image.asset("assets/images/conejo.jpg")),
+                      const SizedBox(height: 30.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          createTag("Alegre"),
+                          createTag("Energico"),
+                          //createTag("Alegre"),
+                          //createTag("Alegre")
+                        ],
+                      ),
+                      const SizedBox(height: 30.0),
+                      Card(
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Description: ",
+                                  style: subtitleText(),
+                                ),
+                              ),
+                              Text(
+                                "El conejo es un mamífero herbívoro de la especie Oryctolagus cuniculus. Se caracteriza por tener un pelaje espeso, orejas largas, patas traseras fuertes y una cola cort",
+                                style: normalText(),
+                              ),
+                              const SizedBox(height: 10.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2 -
+                                            20,
+                                    child: Text(
+                                      "Age: 2 years",
+                                      style: normalBoldText(),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2 -
+                                            20,
+                                    child: Text(
+                                      "Animal Type: Rabbit",
+                                      style: normalBoldText(),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 10.0),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 16,
+                                child: Text(
+                                  "Breed: Narna",
+                                  style: normalBoldText(),
+                                  textAlign: TextAlign.start,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 8, right: 8),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Tomy",
+                        style: titleText(),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(left: 8, right: 8),
+                          child: Image.asset("assets/images/conejo.jpg")),
+                      const SizedBox(height: 30.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          createTag("Alegre"),
+                          createTag("Energico"),
+                          //createTag("Alegre"),
+                          //createTag("Alegre")
+                        ],
+                      ),
+                      const SizedBox(height: 30.0),
+                      Card(
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "Description: ",
+                                  style: subtitleText(),
+                                ),
+                              ),
+                              Text(
+                                "El conejo es un mamífero herbívoro de la especie Oryctolagus cuniculus. Se caracteriza por tener un pelaje espeso, orejas largas, patas traseras fuertes y una cola cort",
+                                style: normalText(),
+                              ),
+                              const SizedBox(height: 10.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2 -
+                                            20,
+                                    child: Text(
+                                      "Age: 2 years",
+                                      style: normalBoldText(),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2 -
+                                            20,
+                                    child: Text(
+                                      "Animal Type: Rabbit",
+                                      style: normalBoldText(),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 10.0),
+                              Container(
+                                width: MediaQuery.of(context).size.width - 16,
+                                child: Text(
+                                  "Breed: Narna",
+                                  style: normalBoldText(),
+                                  textAlign: TextAlign.start,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-          GridView.count(
-            shrinkWrap: true,
-            physics: const ScrollPhysics(),
-            primary: true,
-            padding: const EdgeInsets.all(20),
-            mainAxisSpacing: 20,
-            crossAxisCount: 1,
-            children: <Widget>[
-              petContainer(),
-              petContainer(),
-              petContainer(),
-              petContainer(),
-            ],
-          )
         ],
       ),
     );
   }
 
-  Container petContainer() {
+  Container petContainer(String url) {
     return Container(
-      padding: const EdgeInsets.all(8),
+      margin: const EdgeInsets.only(left: 8, right: 8, top: 20),
+      height: MediaQuery.of(context).size.height / 2,
       decoration: BoxDecoration(
         boxShadow: const [
           BoxShadow(
@@ -57,16 +375,59 @@ class _DashboardWidgetState extends State<DashboardWidget> {
           topRight: Radius.circular(30),
         ),
       ),
-      child: Column(
-        children: [
-          Image.asset("assets/images/dog.jpg"),
-          const Text("Josue"),
-          const Text("Age: 2 years"),
-          const Text("Breed: Perrito"),
-          const Text(
-              "Description: Aiusdhfopiashudfhápsdpfouiaspdoufhiaspkjdfnbapsdjkfbaskjdfbgh")
-        ],
+      child: Container(
+        padding: const EdgeInsets.only(left: 8, right: 8),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              child: Image.asset(
+                url,
+                height: 200,
+              ),
+            ),
+            const Text("Josue"),
+            const Text("Age: 2 years"),
+            const Text("Breed: Perrito"),
+            const Text(
+                "Description: Aiusdhfopiashudfhápsdpfouiaspdoufhiaspkjdfnbapsdjkfbaskjdfbgh"),
+            Container(
+              margin: EdgeInsets.only(top: 8, bottom: 8),
+              child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  separatorBuilder: (_, __) => const Divider(),
+                  itemBuilder: (context, int index) {
+                    return createTag("Amable");
+                  }),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 8, bottom: 8),
+              child: ElevatedButton(
+                style: primaryButton,
+                onPressed: () => null,
+                child: const Text(
+                  "Login",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
+    );
+  }
+
+  Container createTag(String tag) {
+    return Container(
+      padding: EdgeInsets.only(top: 8, bottom: 8, left: 20, right: 20),
+      alignment: Alignment.center,
+      child: Text(
+        tag,
+        style: TextStyle(color: Colors.white),
+      ),
+      color: Colors.blue,
     );
   }
 }

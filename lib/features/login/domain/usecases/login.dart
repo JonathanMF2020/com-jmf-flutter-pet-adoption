@@ -6,8 +6,8 @@ import 'package:petadoption/features/login/data/models/login_model.dart';
 import 'package:petadoption/features/login/domain/repository/login_repository.dart';
 import 'package:petadoption/injection_container.dart';
 
-class LoginUseCase implements UseCase<DataState<LoginModel>, LoginDto> {
-  LoginUseCase(this._loginRepository);
+class Login implements UseCase<DataState<LoginModel>, LoginDto> {
+  Login(this._loginRepository);
   final LoginRepository _loginRepository;
 
   @override

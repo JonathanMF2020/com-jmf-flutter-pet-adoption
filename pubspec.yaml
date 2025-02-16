@@ -24,7 +24,13 @@ dev_dependencies:
   retrofit_generator: ^8.0.4
 flutter:
   uses-material-design: true
+  fonts:
+  - family: PetsAdoptionIcons
+    fonts:
+    - asset: assets/fonts/PetsAdoptionIcons.ttf
   assets:
   - assets/images/register-image.png
   - assets/images/cat.png
   - assets/images/dog.jpg
+  - assets/images/conejo.jpg
+  - assets/images/gati.jpg
