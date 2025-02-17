@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/colors/app_colors.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 import 'package:petadoption/core/constants/route_constants.dart';
-import 'package:petadoption/features/home/presentation/bloc/home_bloc.dart';
+import 'package:petadoption/features/home/presentation/bloc/account/account_bloc.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
@@ -16,9 +16,9 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<HomeBloc, HomeState>(
+    return BlocListener<AccountBloc, AccountState>(
       listener: (context, state) {
-        if (state is HomeSuccess) {
+        if (state is AccountSuccess) {
           if (state.list.isNotEmpty) {
             if (kDebugMode) {
               print("Se encontraron ${state.list.length} variables");

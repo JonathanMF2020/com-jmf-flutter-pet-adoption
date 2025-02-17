@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/colors/app_colors.dart';
 import 'package:petadoption/core/widgets/custom_navigation_bar.dart';
-import 'package:petadoption/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:petadoption/features/dashboard/presentation/bloc/config/config_bloc.dart';
+import 'package:petadoption/features/dashboard/presentation/bloc/pet/pet_bloc.dart';
 import 'package:petadoption/features/dashboard/presentation/widgets/dashboard_widget.dart';
 import 'package:petadoption/injection_container.dart';
 
@@ -12,22 +13,29 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<DashboardBloc>(
-      create: (context) => sl<DashboardBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ConfigBloc>(
+          create: (context) => sl<ConfigBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<PetBloc>()..add(GetPetsEvent()),
+        ),
+      ],
       child: _listenerAuth(context),
     );
   }
 
-  BlocListener<DashboardBloc, DashboardState> _listenerAuth(
+  BlocListener<ConfigBloc, ConfigState> _listenerAuth(
       BuildContext contextBuild) {
-    return BlocListener<DashboardBloc, DashboardState>(
+    return BlocListener<ConfigBloc, ConfigState>(
       listener: (context, state) {
-        if (state is DashboardSuccess) {
+        if (state is ConfigSuccess) {
           if (kDebugMode) {
             print("Listo");
           }
         }
-        if (state is DashboardError) {
+        if (state is ConfigError) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text("Ha ocurrido un error")),
           );
@@ -42,9 +50,9 @@ class DashboardPage extends StatelessWidget {
   }
 
   BlocBuilder _buildBody() {
-    return BlocBuilder<DashboardBloc, DashboardState>(
+    return BlocBuilder<ConfigBloc, ConfigState>(
       builder: (_, state) {
-        if (state is DashboardError) {
+        if (state is ConfigError) {
           return const Center(child: Icon(Icons.refresh));
         }
         return const DashboardWidget();

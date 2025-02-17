@@ -3,26 +3,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/core/resources/data_state.dart';
 import 'package:petadoption/features/home/domain/usecases/get_account.dart';
 
-part 'home_event.dart';
-part 'home_state.dart';
+part 'account_event.dart';
+part 'account_state.dart';
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc(this.getAccount) : super(HomeLoading()) {
-    on<CheckAccount>(onCheckHome);
+class AccountBloc extends Bloc<AccountEvent, AccountState> {
+  AccountBloc(this.getAccount) : super(AccountLoading()) {
+    on<CheckAccountEvent>(onCheckHome);
   }
   final GetAccount getAccount;
-  Future<void> onCheckHome(CheckAccount event, Emitter<HomeState> emit) async {
-    emit(HomeLoadingService());
+
+  Future<void> onCheckHome(
+      CheckAccountEvent event, Emitter<AccountState> emit) async {
+    emit(AccountLoadingService());
     final dataState = await getAccount();
     if (dataState is DataSuccess) {
-      emit(HomeSuccess(dataState.data!));
+      emit(AccountSuccess(dataState.data!));
     }
 
     if (dataState is DataFailed) {
       if (kDebugMode) {
         print("[Error] ${dataState.error.toString()}");
       }
-      emit(HomeError(dataState.error!.message!));
+      emit(AccountError(dataState.error!.message!));
     }
   }
 }

@@ -1,12 +1,25 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:petadoption/core/constants/constants.dart';
+import 'package:petadoption/injection_container.dart';
 
 class DioInterceptor extends Interceptor {
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers.addAll({
-      'Content-Type': 'application/json',
-    });
+  Future<void> onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
+    final fss = sl<FlutterSecureStorage>();
+    final token = await fss.read(key: storageToken);
+    final typeToken = await fss.read(key: storageTypeToken);
+    if (token == null && typeToken == null) {
+    } else {
+      options.headers.addAll({
+        HttpHeaders.contentTypeHeader: 'application/json',
+        HttpHeaders.authorizationHeader: "${typeToken!} ${token!}"
+      });
+    }
 
     if (kDebugMode) {
       print(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:petadoption/config/colors/app_colors.dart';
 
 BottomNavigationBar customNavigationBar(int currentIndex) {
   return BottomNavigationBar(
-    backgroundColor: Colors.blueAccent,
-    selectedItemColor: Colors.white,
+    backgroundColor: AppColors.primary,
+    selectedItemColor: AppColors.accent,
     unselectedItemColor: Colors.grey.shade400,
     currentIndex: currentIndex,
     onTap: (index) {},

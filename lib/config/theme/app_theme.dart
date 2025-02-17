@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petadoption/config/colors/app_colors.dart';
 
 ThemeData theme() {
   return ThemeData(
@@ -80,7 +81,7 @@ TextStyle normalColorUnderLineText() {
 }
 
 ButtonStyle primaryButton = ElevatedButton.styleFrom(
-  backgroundColor: Colors.blueAccent, // Color de fondo
+  backgroundColor: AppColors.secondary, // Color de fondo
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(16.0), // Bordes redondeados
   ),

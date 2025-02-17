@@ -7,11 +7,13 @@ part of 'pet_model.dart';
 // **************************************************************************
 
 PetModel _$PetModelFromJson(Map<String, dynamic> json) => PetModel(
-      access_token: json['access_token'] as String,
-      token_type: json['token_type'] as String,
+      id: (json['id'] as num).toInt(),
+      age: (json['age'] as num).toInt(),
+      name: json['name'] as String,
     );
 
 Map<String, dynamic> _$PetModelToJson(PetModel instance) => <String, dynamic>{
-      'access_token': instance.access_token,
-      'token_type': instance.token_type,
+      'id': instance.id,
+      'name': instance.name,
+      'age': instance.age,
     };

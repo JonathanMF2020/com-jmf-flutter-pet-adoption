@@ -2,18 +2,19 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:petadoption/core/dio/dio_interceptor.dart';
-import 'package:petadoption/features/dashboard/data/data_source/config_api_service.dart';
-import 'package:petadoption/features/dashboard/data/repository/config_repository_impl.dart';
+import 'package:petadoption/features/dashboard/data/data_source/dashboard_api_service.dart';
+import 'package:petadoption/features/dashboard/data/repository/dashboard_repository_impl.dart';
 import 'package:petadoption/features/dashboard/domain/repository/config_repository.dart';
 import 'package:petadoption/features/dashboard/domain/usecases/get_config.dart';
-import 'package:petadoption/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:petadoption/features/dashboard/presentation/bloc/config/config_bloc.dart';
+import 'package:petadoption/features/dashboard/presentation/bloc/pet/pet_bloc.dart';
 import 'package:petadoption/features/home/data/data_source/home_api_service.dart';
 import 'package:petadoption/features/home/data/data_source/home_storage_service.dart';
 import 'package:petadoption/features/home/data/repository/home_repository_impl.dart';
 import 'package:petadoption/features/home/domain/repository/home_repository.dart';
 import 'package:petadoption/features/home/domain/usecases/get_account.dart';
-import 'package:petadoption/features/home/domain/usecases/get_pets.dart';
-import 'package:petadoption/features/home/presentation/bloc/home_bloc.dart';
+import 'package:petadoption/features/dashboard/domain/usecases/get_pets.dart';
+import 'package:petadoption/features/home/presentation/bloc/account/account_bloc.dart';
 import 'package:petadoption/features/login/data/data_source/remote/login_api_service.dart';
 import 'package:petadoption/features/login/data/repository/login_repository_impl.dart';
 import 'package:petadoption/features/login/domain/repository/login_repository.dart';
@@ -35,18 +36,20 @@ Future<void> initializeDependencies() async {
   const FlutterSecureStorage secureStorage = FlutterSecureStorage();
   sl.registerSingleton<FlutterSecureStorage>(secureStorage);
   //Data sources
+  // APIS
   sl.registerSingleton<RegisterApiService>(RegisterApiService(sl()));
   sl.registerSingleton<LoginApiService>(LoginApiService(sl()));
-  sl.registerSingleton<ConfigApiService>(ConfigApiService(sl()));
+  sl.registerSingleton<DashboardApiService>(DashboardApiService(sl()));
   sl.registerSingleton<HomeApiService>(HomeApiService(sl()));
-
+  // STORAGE
   sl.registerSingleton<HomeStorageService>(HomeStorageService(sl()));
 
   //Repositories
   sl.registerLazySingleton<RegisterRepository>(
       () => RegisterRepositoryImpl(sl()));
   sl.registerLazySingleton<LoginRepository>(() => LoginRepositoryImpl(sl()));
-  sl.registerLazySingleton<ConfigRepository>(() => ConfigRepositoryImpl(sl()));
+  sl.registerLazySingleton<ConfigRepository>(
+      () => DashboardRepositoryImpl(sl()));
   sl.registerLazySingleton<HomeRepository>(
       () => HomeRepositoryImpl(sl(), sl()));
 
@@ -60,6 +63,7 @@ Future<void> initializeDependencies() async {
   //Blocs
   sl.registerFactory(() => RegisterBloc(sl()));
   sl.registerFactory(() => LoginBloc(sl()));
-  sl.registerFactory(() => DashboardBloc(sl()));
-  sl.registerFactory(() => HomeBloc(sl()));
+  sl.registerFactory(() => ConfigBloc(sl()));
+  sl.registerFactory(() => AccountBloc(sl()));
+  sl.registerFactory(() => PetBloc(sl()));
 }
