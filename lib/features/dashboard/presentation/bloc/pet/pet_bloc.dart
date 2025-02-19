@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/core/resources/data_state.dart';
-import 'package:petadoption/features/dashboard/data/models/pet_model.dart';
+import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
 import 'package:petadoption/features/dashboard/domain/usecases/get_pets.dart';
 
 part 'pet_event.dart';

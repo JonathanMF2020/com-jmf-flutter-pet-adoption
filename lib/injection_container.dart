@@ -4,11 +4,10 @@ import 'package:get_it/get_it.dart';
 import 'package:petadoption/core/dio/dio_interceptor.dart';
 import 'package:petadoption/features/dashboard/data/data_source/dashboard_api_service.dart';
 import 'package:petadoption/features/dashboard/data/repository/dashboard_repository_impl.dart';
-import 'package:petadoption/features/dashboard/domain/repository/config_repository.dart';
+import 'package:petadoption/features/dashboard/domain/repository/dashboard_repository.dart';
 import 'package:petadoption/features/dashboard/domain/usecases/get_config.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/config/config_bloc.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/pet/pet_bloc.dart';
-import 'package:petadoption/features/home/data/data_source/home_api_service.dart';
 import 'package:petadoption/features/home/data/data_source/home_storage_service.dart';
 import 'package:petadoption/features/home/data/repository/home_repository_impl.dart';
 import 'package:petadoption/features/home/domain/repository/home_repository.dart';
@@ -40,7 +39,6 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<RegisterApiService>(RegisterApiService(sl()));
   sl.registerSingleton<LoginApiService>(LoginApiService(sl()));
   sl.registerSingleton<DashboardApiService>(DashboardApiService(sl()));
-  sl.registerSingleton<HomeApiService>(HomeApiService(sl()));
   // STORAGE
   sl.registerSingleton<HomeStorageService>(HomeStorageService(sl()));
 
@@ -48,10 +46,9 @@ Future<void> initializeDependencies() async {
   sl.registerLazySingleton<RegisterRepository>(
       () => RegisterRepositoryImpl(sl()));
   sl.registerLazySingleton<LoginRepository>(() => LoginRepositoryImpl(sl()));
-  sl.registerLazySingleton<ConfigRepository>(
+  sl.registerLazySingleton<DashboardRepository>(
       () => DashboardRepositoryImpl(sl()));
-  sl.registerLazySingleton<HomeRepository>(
-      () => HomeRepositoryImpl(sl(), sl()));
+  sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl()));
 
   //Use cases
   sl.registerLazySingleton(() => Register(sl()));

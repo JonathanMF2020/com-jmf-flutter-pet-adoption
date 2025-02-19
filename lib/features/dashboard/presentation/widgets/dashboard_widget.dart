@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
-import 'package:petadoption/features/dashboard/data/models/pet_model.dart';
+import 'package:petadoption/core/constants/constants.dart';
+import 'package:petadoption/core/utils.dart';
+import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
+import 'package:petadoption/features/dashboard/data/models/tag/tag_model.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/pet/pet_bloc.dart';
 
 class DashboardWidget extends StatefulWidget {
@@ -33,7 +36,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       scrollDirection: Axis.vertical,
                       physics: const ClampingScrollPhysics(),
                       children: state.petModels
-                          .map((item) => Text(item.name))
+                          .map((item) => petConainer(item))
                           .toList(),
                     );
                   }
@@ -60,17 +63,15 @@ class _DashboardWidgetState extends State<DashboardWidget> {
           ),
           Container(
               margin: const EdgeInsets.only(left: 8, right: 8),
-              child: Image.asset("assets/images/conejo.jpg")),
-          const SizedBox(height: 30.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              createTag("Alegre"),
-              createTag("Energico"),
-              //createTag("Alegre"),
-              //createTag("Alegre")
-            ],
-          ),
+              child: model.filename == null
+                  ? const CircularProgressIndicator()
+                  : Image.network(apiImagesURL + model.filename!)),
+          model.tags.isNotEmpty ? const SizedBox(height: 30.0) : Container(),
+          model.tags.isNotEmpty
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: model.tags.map((tag) => createTag(tag)).toList())
+              : Container(),
           const SizedBox(height: 30.0),
           Card(
             child: Container(
@@ -85,9 +86,12 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       style: subtitleText(),
                     ),
                   ),
-                  Text(
-                    "El conejo es un mamífero herbívoro de la especie Oryctolagus cuniculus. Se caracteriza por tener un pelaje espeso, orejas largas, patas traseras fuertes y una cola cort",
-                    style: normalText(),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      model.description,
+                      style: normalText(),
+                    ),
                   ),
                   const SizedBox(height: 10.0),
                   Row(
@@ -96,7 +100,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 2 - 20,
                         child: Text(
-                          "Age: 2 years",
+                          "Age: ${model.age} years",
                           style: normalBoldText(),
                           textAlign: TextAlign.start,
                         ),
@@ -104,7 +108,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 2 - 20,
                         child: Text(
-                          "Animal Type: Rabbit",
+                          "Animal Type: ${model.animal_type!.name}t",
                           style: normalBoldText(),
                           textAlign: TextAlign.start,
                         ),
@@ -115,7 +119,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width - 16,
                     child: Text(
-                      "Breed: Narna",
+                      "Breed: ${model.breed!.name}",
                       style: normalBoldText(),
                       textAlign: TextAlign.start,
                     ),
@@ -129,13 +133,13 @@ class _DashboardWidgetState extends State<DashboardWidget> {
     );
   }
 
-  Container createTag(String tag) {
+  Container createTag(TagModel tag) {
     return Container(
       padding: const EdgeInsets.only(top: 8, bottom: 8, left: 20, right: 20),
       alignment: Alignment.center,
-      color: Colors.blue,
+      color: hexToColor(tag.color),
       child: Text(
-        tag,
+        tag.name,
         style: const TextStyle(color: Colors.white),
       ),
     );

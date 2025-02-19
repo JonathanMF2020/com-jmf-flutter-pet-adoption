@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/core/resources/data_state.dart';
-import 'package:petadoption/features/dashboard/data/models/config_model.dart';
+import 'package:petadoption/features/dashboard/data/models/config/config_model.dart';
 import 'package:petadoption/features/dashboard/domain/usecases/get_config.dart';
 
 part 'config_event.dart';
