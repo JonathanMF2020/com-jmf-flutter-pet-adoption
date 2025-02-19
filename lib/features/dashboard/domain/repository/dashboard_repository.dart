@@ -6,4 +6,5 @@ abstract class DashboardRepository {
   // API Methods
   Future<DataState<List<ConfigModel>>> getConfiguration();
   Future<DataState<List<PetModel>>> getPets();
+  Future<void> logout();
 }

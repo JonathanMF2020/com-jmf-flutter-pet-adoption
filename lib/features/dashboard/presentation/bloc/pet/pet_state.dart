@@ -16,7 +16,8 @@ final class PetSuccess extends PetState {
 
 final class PetError extends PetState {
   final String error;
-  const PetError(this.error);
+  final int type;
+  const PetError(this.error, this.type);
 }
 
 final class PetLoading extends PetState {}

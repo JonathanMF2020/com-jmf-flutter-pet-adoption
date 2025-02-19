@@ -22,10 +22,8 @@ class LoginPage extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
-          if (kDebugMode) {
-            Navigator.pushNamedAndRemoveUntil(
-                context, routeDashboard, (Route<dynamic> route) => false);
-          }
+          Navigator.pushNamedAndRemoveUntil(
+              context, routeDashboard, (Route<dynamic> route) => false);
         }
         if (state is LoginError) {
           ScaffoldMessenger.of(context).showSnackBar(

@@ -13,4 +13,8 @@ class HomeStorageService {
       return [token!, typeToken!];
     }
   }
+
+  Future<void> removeAccount() async {
+    await fss.deleteAll();
+  }
 }

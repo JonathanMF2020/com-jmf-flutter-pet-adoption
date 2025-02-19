@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 import 'package:petadoption/core/constants/constants.dart';
+import 'package:petadoption/core/constants/route_constants.dart';
 import 'package:petadoption/core/utils.dart';
 import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
 import 'package:petadoption/features/dashboard/data/models/tag/tag_model.dart';
@@ -23,6 +24,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.error)),
           );
+          if (state.type == 1) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, routeHome, (Route<dynamic> route) => false);
+          }
         }
       },
       child: SafeArea(

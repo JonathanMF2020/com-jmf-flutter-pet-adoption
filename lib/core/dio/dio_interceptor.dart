@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:petadoption/core/constants/constants.dart';
+import 'package:petadoption/core/exception/token_exception.dart';
 import 'package:petadoption/injection_container.dart';
 
 class DioInterceptor extends Interceptor {
@@ -45,7 +46,8 @@ class DioInterceptor extends Interceptor {
     }
     if (err.response?.statusCode == 401) {
       if (kDebugMode) {
-        print('[Dio] Sesión expirada. Redirigir al inicio de sesión.');
+        throw const TokenException(
+            "A problem has occurred, please log in again");
       }
     }
     super.onError(err, handler);

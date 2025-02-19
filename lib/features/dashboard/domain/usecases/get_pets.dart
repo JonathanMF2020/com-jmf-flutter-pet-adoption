@@ -4,12 +4,12 @@ import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
 import 'package:petadoption/features/dashboard/domain/repository/dashboard_repository.dart';
 
 class GetPets implements UseCase<DataState<List<PetModel>>, void> {
-  GetPets(this._homeRepository);
-  final DashboardRepository _homeRepository;
+  GetPets(this._dashboardRepository);
+  final DashboardRepository _dashboardRepository;
 
   @override
   Future<DataState<List<PetModel>>> call({void params}) async {
-    final data = await _homeRepository.getPets();
+    final data = await _dashboardRepository.getPets();
     return data;
   }
 }
