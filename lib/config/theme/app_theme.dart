@@ -93,6 +93,19 @@ ButtonStyle primaryButton = ElevatedButton.styleFrom(
   ),
 );
 
+ButtonStyle secondaryButton = ElevatedButton.styleFrom(
+  backgroundColor: AppColors.accent, // Color de fondo
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(16.0), // Bordes redondeados
+  ),
+  padding: const EdgeInsets.symmetric(
+      vertical: 16.0, horizontal: 24.0), // Espaciado interno
+  textStyle: const TextStyle(
+    fontSize: 18.0,
+    fontWeight: FontWeight.bold, // Negrita
+  ),
+);
+
 InputDecoration customInputDecoration({
   required String hintText,
   String? labelText,

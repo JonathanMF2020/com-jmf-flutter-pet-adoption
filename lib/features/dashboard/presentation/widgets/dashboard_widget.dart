@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 import 'package:petadoption/core/constants/constants.dart';
 import 'package:petadoption/core/constants/route_constants.dart';
 import 'package:petadoption/core/utils.dart';
+import 'package:petadoption/core/widgets/util_widgets.dart';
 import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
 import 'package:petadoption/features/dashboard/data/models/tag/tag_model.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/pet/pet_bloc.dart';
@@ -70,7 +72,14 @@ class _DashboardWidgetState extends State<DashboardWidget> {
               margin: const EdgeInsets.only(left: 8, right: 8),
               child: model.filename == null
                   ? const CircularProgressIndicator()
-                  : Image.network(apiImagesURL + model.filename!)),
+                  : Hero(
+                      tag: model.id,
+                      child: CachedNetworkImage(
+                        imageUrl: apiImagesURL + model.filename!,
+                        height: 200,
+                        width: MediaQuery.of(context).size.width - 16,
+                      ),
+                    )),
           model.tags.isNotEmpty ? const SizedBox(height: 30.0) : Container(),
           model.tags.isNotEmpty
               ? Row(
@@ -132,21 +141,20 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                 ],
               ),
             ),
-          )
+          ),
+          const SizedBox(height: 30.0),
+          IconButton(
+              onPressed: () => navigateToPet(model),
+              icon: const Icon(
+                Icons.arrow_forward_ios,
+                size: 40,
+              ))
         ],
       ),
     );
   }
 
-  Container createTag(TagModel tag) {
-    return Container(
-      padding: const EdgeInsets.only(top: 8, bottom: 8, left: 20, right: 20),
-      alignment: Alignment.center,
-      color: hexToColor(tag.color),
-      child: Text(
-        tag.name,
-        style: const TextStyle(color: Colors.white),
-      ),
-    );
+  void navigateToPet(PetModel petmodel) {
+    Navigator.pushNamed(context, routePetInfo, arguments: petmodel);
   }
 }
