@@ -4,10 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 import 'package:petadoption/core/constants/constants.dart';
 import 'package:petadoption/core/constants/route_constants.dart';
-import 'package:petadoption/core/utils.dart';
 import 'package:petadoption/core/widgets/util_widgets.dart';
 import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
-import 'package:petadoption/features/dashboard/data/models/tag/tag_model.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/pet/pet_bloc.dart';
 
 class DashboardWidget extends StatefulWidget {
