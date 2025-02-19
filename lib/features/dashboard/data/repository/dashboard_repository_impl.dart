@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:petadoption/core/dio/custom_request.dart';
 import 'package:petadoption/core/resources/data_state.dart';
 import 'package:petadoption/features/dashboard/data/data_source/dashboard_api_service.dart';
@@ -25,7 +22,6 @@ class DashboardRepositoryImpl implements DashboardRepository {
 
   @override
   Future<void> logout() async {
-    print("Llamado remove");
     await _homeStorageService.removeAccount();
   }
 }
