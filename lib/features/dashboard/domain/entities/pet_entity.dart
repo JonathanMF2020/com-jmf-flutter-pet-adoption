@@ -1,8 +1,8 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:equatable/equatable.dart';
 import 'package:petadoption/features/dashboard/data/models/animal_type_model.dart';
 import 'package:petadoption/features/dashboard/data/models/breed_model.dart';
-import 'package:petadoption/features/dashboard/domain/entities/animal_type_entity.dart';
-import 'package:petadoption/features/dashboard/domain/entities/breed_entity.dart';
 
 class PetEntity extends Equatable {
   const PetEntity(
