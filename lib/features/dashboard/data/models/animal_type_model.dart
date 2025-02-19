@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:petadoption/features/dashboard/domain/entities/animal_type_entity.dart';
-import 'package:petadoption/features/dashboard/domain/entities/breed_entity.dart';
 
 part 'animal_type_model.g.dart';
 
