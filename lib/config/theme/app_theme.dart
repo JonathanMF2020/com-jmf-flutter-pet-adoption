@@ -49,6 +49,16 @@ TextStyle normalText() {
   );
 }
 
+TextStyle normalTextMinum() {
+  return const TextStyle(
+    fontSize: 9, // Tamaño de la fuente
+    fontWeight: FontWeight.normal, // Grosor de la fuente
+    color: Colors.black, // Color del texto
+    letterSpacing: 1.2, // Espaciado entre letras
+    fontFamily: 'Roboto', // Fuente personalizada (si usas una)
+  );
+}
+
 TextStyle normalBoldText() {
   return const TextStyle(
     fontSize: 10, // Tamaño de la fuente

@@ -14,7 +14,11 @@ class DioInterceptor extends Interceptor {
     final fss = sl<FlutterSecureStorage>();
     final token = await fss.read(key: storageToken);
     final typeToken = await fss.read(key: storageTypeToken);
-    if (token == null && typeToken == null) {
+    if (token == null && typeToken == null ||
+        token!.isEmpty && typeToken!.isEmpty) {
+      options.headers.addAll({
+        HttpHeaders.contentTypeHeader: 'application/json',
+      });
     } else {
       options.headers.addAll({
         HttpHeaders.contentTypeHeader: 'application/json',
