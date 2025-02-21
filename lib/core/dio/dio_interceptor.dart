@@ -22,7 +22,7 @@ class DioInterceptor extends Interceptor {
     } else {
       options.headers.addAll({
         HttpHeaders.contentTypeHeader: 'application/json',
-        HttpHeaders.authorizationHeader: "${typeToken!} ${token!}"
+        HttpHeaders.authorizationHeader: "$typeToken $token"
       });
     }
 

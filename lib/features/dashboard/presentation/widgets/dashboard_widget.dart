@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 import 'package:petadoption/core/constants/constants.dart';
 import 'package:petadoption/core/constants/route_constants.dart';
-import 'package:petadoption/core/widgets/util_widgets.dart';
 import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/pet/pet_bloc.dart';
 
@@ -41,10 +40,10 @@ class _DashboardWidgetState extends State<DashboardWidget> {
       },
       child: SafeArea(
         child: Container(
-          margin: EdgeInsets.all(16),
+          margin: const EdgeInsets.all(16),
           child: Column(
             children: [
-              CupertinoSearchTextField(
+              const CupertinoSearchTextField(
                 prefixIcon: Icon(Icons.search),
               ),
               const SizedBox(height: 20.0),
@@ -99,7 +98,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                           scrollDirection: Axis.horizontal,
                           children: state.petModels
                               .map((pet) => pet.filename != null
-                                  ? PetContainer(pet)
+                                  ? petContainer(pet)
                                   : Container())
                               .toList()),
                     );
@@ -130,7 +129,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                           scrollDirection: Axis.horizontal,
                           children: state.petModels
                               .map((pet) => pet.filename != null
-                                  ? PetContainer(pet)
+                                  ? petContainer(pet)
                                   : Container())
                               .toList()),
                     );
@@ -145,7 +144,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
     );
   }
 
-  Card PetContainer(PetModel pet) {
+  Card petContainer(PetModel pet) {
     return Card(
       borderOnForeground: true,
       child: Container(
@@ -176,8 +175,8 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(Icons.location_city),
-                      Container(
+                      const Icon(Icons.location_city),
+                      SizedBox(
                         width: 90,
                         child: Text(
                           "Leon, Guanajuato",
@@ -189,8 +188,8 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(Icons.timelapse),
-                      Container(
+                      const Icon(Icons.timelapse),
+                      SizedBox(
                         width: 90,
                         child: Text(
                           "${pet.age.toString()} year old",
