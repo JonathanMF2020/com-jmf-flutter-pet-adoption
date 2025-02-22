@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 import 'package:petadoption/core/constants/constants.dart';
 import 'package:petadoption/core/constants/route_constants.dart';
+import 'package:petadoption/core/widgets/util_widgets.dart';
 import 'package:petadoption/features/dashboard/data/models/animal_type/animal_type_model.dart';
 import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/animal_type/animal_type_bloc.dart';
@@ -93,7 +94,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                       ),
                     );
                   }
-                  return const CircularProgressIndicator.adaptive();
+                  return customLoading();
                 },
               ),
               const SizedBox(height: 20.0),

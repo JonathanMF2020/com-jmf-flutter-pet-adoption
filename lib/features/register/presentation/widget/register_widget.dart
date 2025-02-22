@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 import 'package:petadoption/core/constants/route_constants.dart';
+import 'package:petadoption/core/widgets/util_widgets.dart';
 import 'package:petadoption/features/register/data/models/dto/register_dto.dart';
 import 'package:petadoption/features/register/presentation/bloc/register_bloc.dart';
 
@@ -13,6 +14,7 @@ class RegisterWidget extends StatefulWidget {
 }
 
 class _RegisterWidgetState extends State<RegisterWidget> {
+  var showPassword = true;
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _username = TextEditingController();
@@ -65,17 +67,21 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                     hintText: "Password",
                     labelText: "Password",
                     prefixIcon: const Icon(Icons.lock),
-                    suffixIcon: const Icon(
-                        Icons.visibility_off), // Icon to show/hide password
+                    suffixIcon: IconButton(
+                        onPressed: _onClickEye,
+                        icon: !showPassword
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons
+                                .visibility_off)), // Icon to show/hide password
                   ),
                   keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
+                  obscureText: showPassword,
                 ),
                 const SizedBox(height: 30.0),
                 BlocBuilder<RegisterBloc, RegisterState>(
                   builder: (_, state) {
                     if (state is RegisterLoadingService) {
-                      return const CircularProgressIndicator();
+                      return customLoading();
                     }
                     return ElevatedButton(
                       style: primaryButton,
@@ -109,6 +115,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               password: _password.text,
               username: _username.text)));
     }
+  }
+
+  void _onClickEye() {
+    setState(() {
+      showPassword = !showPassword;
+    });
   }
 
   void _handleSignUp() {

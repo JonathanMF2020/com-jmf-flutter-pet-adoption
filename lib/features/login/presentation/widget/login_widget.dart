@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 import 'package:petadoption/core/constants/route_constants.dart';
+import 'package:petadoption/core/widgets/util_widgets.dart';
 import 'package:petadoption/features/login/data/models/dto/login_dto.dart';
 import 'package:petadoption/features/login/presentation/bloc/login_bloc.dart';
 
@@ -13,6 +16,7 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  var showPassword = true;
   final TextEditingController _password = TextEditingController();
   final TextEditingController _username = TextEditingController();
   @override
@@ -54,17 +58,21 @@ class _LoginWidgetState extends State<LoginWidget> {
                     hintText: "Password",
                     labelText: "Password",
                     prefixIcon: const Icon(Icons.lock),
-                    suffixIcon: const Icon(
-                        Icons.visibility_off), // Icon to show/hide password
+                    suffixIcon: IconButton(
+                        onPressed: _onClickEye,
+                        icon: !showPassword
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons
+                                .visibility_off)), // Icon to show/hide password
                   ),
                   keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
+                  obscureText: showPassword,
                 ),
                 const SizedBox(height: 30.0),
                 BlocBuilder<LoginBloc, LoginState>(
                   builder: (_, state) {
                     if (state is LoginLoadingService) {
-                      return const CircularProgressIndicator();
+                      return customLoading();
                     }
                     return ElevatedButton(
                       style: primaryButton,
@@ -93,6 +101,12 @@ class _LoginWidgetState extends State<LoginWidget> {
       BlocProvider.of<LoginBloc>(context).add(ClickButtonLoginService(
           LoginDto(password: _password.text, username: _username.text)));
     }
+  }
+
+  void _onClickEye() {
+    setState(() {
+      showPassword = !showPassword;
+    });
   }
 
   void _handleCeretaAc() {
