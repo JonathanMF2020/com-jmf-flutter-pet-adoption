@@ -5,7 +5,11 @@ part 'animal_type_model.g.dart';
 
 @JsonSerializable()
 class AnimalTypeModel extends AnimalTypeEntity {
-  const AnimalTypeModel({required super.id, required super.name});
+  const AnimalTypeModel(
+      {required super.id,
+      required super.name,
+      required super.filename,
+      required super.path});
 
   factory AnimalTypeModel.fromJson(Map<String, dynamic> json) =>
       _$AnimalTypeModelFromJson(json);

@@ -5,8 +5,10 @@ import 'package:petadoption/core/dio/dio_interceptor.dart';
 import 'package:petadoption/features/dashboard/data/data_source/dashboard_api_service.dart';
 import 'package:petadoption/features/dashboard/data/repository/dashboard_repository_impl.dart';
 import 'package:petadoption/features/dashboard/domain/repository/dashboard_repository.dart';
+import 'package:petadoption/features/dashboard/domain/usecases/get_animal_type.dart';
 import 'package:petadoption/features/dashboard/domain/usecases/get_config.dart';
 import 'package:petadoption/features/dashboard/domain/usecases/logout.dart';
+import 'package:petadoption/features/dashboard/presentation/bloc/animal_type/animal_type_bloc.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/config/config_bloc.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/pet/pet_bloc.dart';
 import 'package:petadoption/features/home/data/data_source/home_storage_service.dart';
@@ -58,6 +60,7 @@ Future<void> initializeDependencies() async {
   sl.registerLazySingleton(() => GetAccount(sl()));
   sl.registerLazySingleton(() => GetPets(sl()));
   sl.registerLazySingleton(() => Logout(sl()));
+  sl.registerLazySingleton(() => GetAnimalType(sl()));
 
   //Blocs
   sl.registerFactory(() => RegisterBloc(sl()));
@@ -65,4 +68,5 @@ Future<void> initializeDependencies() async {
   sl.registerFactory(() => ConfigBloc(sl()));
   sl.registerFactory(() => AccountBloc(sl()));
   sl.registerFactory(() => PetBloc(sl(), sl()));
+  sl.registerFactory(() => AnimalTypeBloc(sl(), sl()));
 }

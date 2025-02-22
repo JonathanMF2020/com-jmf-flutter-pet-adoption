@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/colors/app_colors.dart';
 import 'package:petadoption/core/widgets/custom_navigation_bar.dart';
+import 'package:petadoption/features/dashboard/presentation/bloc/animal_type/animal_type_bloc.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/config/config_bloc.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/pet/pet_bloc.dart';
 import 'package:petadoption/features/dashboard/presentation/widgets/dashboard_widget.dart';
@@ -20,6 +21,9 @@ class DashboardPage extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => sl<PetBloc>()..add(GetPetsEvent()),
+        ),
+        BlocProvider(
+          create: (context) => sl<AnimalTypeBloc>()..add(GetAnimalTypeEvent()),
         ),
       ],
       child: _listenerAuth(context),

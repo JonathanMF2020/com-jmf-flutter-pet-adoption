@@ -5,7 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
 import 'package:petadoption/core/constants/constants.dart';
 import 'package:petadoption/core/constants/route_constants.dart';
+import 'package:petadoption/features/dashboard/data/models/animal_type/animal_type_model.dart';
 import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
+import 'package:petadoption/features/dashboard/presentation/bloc/animal_type/animal_type_bloc.dart';
 import 'package:petadoption/features/dashboard/presentation/bloc/pet/pet_bloc.dart';
 
 class DashboardWidget extends StatefulWidget {
@@ -26,18 +28,33 @@ class _DashboardWidgetState extends State<DashboardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<PetBloc, PetState>(
-      listener: (context, state) {
-        if (state is PetError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.error)),
-          );
-          if (state.type == 1) {
-            Navigator.pushNamedAndRemoveUntil(
-                context, routeHome, (Route<dynamic> route) => false);
-          }
-        }
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<PetBloc, PetState>(
+          listener: (context, state) {
+            if (state is PetError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.error)),
+              );
+              if (state.type == 1) {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, routeHome, (Route<dynamic> route) => false);
+              }
+            }
+          },
+        ),
+        BlocListener<AnimalTypeBloc, AnimalTypeState>(
+          listener: (context, state) {
+            if (state is AnimalTypeError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.error),
+                ),
+              );
+            }
+          },
+        ),
+      ],
       child: SafeArea(
         child: Container(
           margin: const EdgeInsets.all(16),
@@ -60,20 +77,24 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   ),
                 ],
               ),
-              Flexible(
-                flex: 1,
-                child: ListView.separated(
-                  itemCount: 8,
-                  scrollDirection: Axis.horizontal,
-                  separatorBuilder: (context, index) => const SizedBox(
-                    width: 10,
-                  ),
-                  itemBuilder: (context, index) => ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.network("https://placehold.co/50x50/png",
-                        fit: BoxFit.fill),
-                  ),
-                ),
+              BlocBuilder<AnimalTypeBloc, AnimalTypeState>(
+                builder: (context, state) {
+                  if (state is AnimalTypeSuccess) {
+                    return Flexible(
+                      flex: 1,
+                      child: ListView.separated(
+                        itemCount: state.animalTypes.length,
+                        scrollDirection: Axis.horizontal,
+                        separatorBuilder: (context, index) => const SizedBox(
+                          width: 10,
+                        ),
+                        itemBuilder: (context, index) =>
+                            animalTypeContainer(state.animalTypes[index]),
+                      ),
+                    );
+                  }
+                  return const CircularProgressIndicator.adaptive();
+                },
               ),
               const SizedBox(height: 20.0),
               Row(
@@ -144,6 +165,37 @@ class _DashboardWidgetState extends State<DashboardWidget> {
     );
   }
 
+  ClipRRect animalTypeContainer(AnimalTypeModel animalType) {
+    if (animalType.path == null) {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(8.0),
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(
+            animalType.name,
+            style: normalBoldText(),
+          ),
+        ),
+      );
+    }
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8.0),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          CachedNetworkImage(
+              imageUrl: apiBaseURL + animalType.path!, fit: BoxFit.fill),
+          Align(
+              alignment: Alignment.center,
+              child: Text(
+                animalType.name,
+                style: miniTextCategory(),
+              )),
+        ],
+      ),
+    );
+  }
+
   Card petContainer(PetModel pet) {
     return Card(
       borderOnForeground: true,
@@ -156,7 +208,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: CachedNetworkImage(
-                  imageUrl: apiImagesURL + pet.filename!,
+                  imageUrl: apiBaseURL + pet.path!,
                   fit: BoxFit.cover,
                   width: 120,
                   height: 120,

@@ -1,6 +1,7 @@
 import 'package:petadoption/core/dio/custom_request.dart';
 import 'package:petadoption/core/resources/data_state.dart';
 import 'package:petadoption/features/dashboard/data/data_source/dashboard_api_service.dart';
+import 'package:petadoption/features/dashboard/data/models/animal_type/animal_type_model.dart';
 import 'package:petadoption/features/dashboard/data/models/config/config_model.dart';
 import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
 import 'package:petadoption/features/dashboard/domain/repository/dashboard_repository.dart';
@@ -23,5 +24,10 @@ class DashboardRepositoryImpl implements DashboardRepository {
   @override
   Future<void> logout() async {
     await _homeStorageService.removeAccount();
+  }
+
+  @override
+  Future<DataState<List<AnimalTypeModel>>> getAnimalType() {
+    return handleRequest(_configApiService.getAnimalType());
   }
 }

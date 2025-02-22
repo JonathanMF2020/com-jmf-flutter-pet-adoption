@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:petadoption/core/resources/data_state.dart';
 
@@ -18,7 +19,8 @@ Future<DataState<T>> handleRequest<T>(Future<HttpResponse<T>> request) async {
         ),
       );
     }
-  } catch (e) {
+  } catch (e, stack) {
+    debugPrintStack(stackTrace: stack);
     rethrow; // Allow callers to see the exception.
   }
 }
