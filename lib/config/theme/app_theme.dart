@@ -119,6 +119,16 @@ TextStyle normalBoldWhiteText() {
   );
 }
 
+TextStyle normalBoldWhiteTextfONT(double value) {
+  return TextStyle(
+    fontSize: value, // Tamaño de la fuente
+    fontWeight: FontWeight.bold, // Grosor de la fuente
+    color: Colors.white, // Color del texto
+    letterSpacing: 1.2, // Espaciado entre letras
+    fontFamily: 'Roboto', // Fuente personalizada (si usas una)
+  );
+}
+
 TextStyle normalColorUnderLineText() {
   return const TextStyle(
     fontSize: 13, // Tamaño de la fuente

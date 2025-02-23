@@ -11,4 +11,5 @@ class AppColors {
   static const Color genderContainer = Color(0xFFf8dde2);
   static const Color ageContainer = Color(0xFFfee0d3);
   static const Color weightContainer = Color(0xFFffe8c9);
+  static const Color back2 = Color(0xFFf5f4f8);
 }
