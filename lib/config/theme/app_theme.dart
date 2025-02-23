@@ -39,6 +39,26 @@ TextStyle subtitleText() {
   );
 }
 
+TextStyle subtitleTextGrey() {
+  return const TextStyle(
+    fontSize: 18, // Tamaño de la fuente
+    fontWeight: FontWeight.w400, // Grosor de la fuente
+    color: Colors.grey, // Color del texto
+    letterSpacing: 1.2, // Espaciado entre letras
+    fontFamily: 'Roboto', // Fuente personalizada (si usas una)
+  );
+}
+
+TextStyle subtitleTextGrey2() {
+  return const TextStyle(
+    fontSize: 12, // Tamaño de la fuente
+    fontWeight: FontWeight.w500, // Grosor de la fuente
+    color: Colors.grey, // Color del texto
+    letterSpacing: 1.2, // Espaciado entre letras
+    fontFamily: 'Roboto', // Fuente personalizada (si usas una)
+  );
+}
+
 TextStyle normalText() {
   return const TextStyle(
     fontSize: 13, // Tamaño de la fuente
@@ -62,6 +82,16 @@ TextStyle normalTextMinum() {
 TextStyle normalBoldText() {
   return const TextStyle(
     fontSize: 10, // Tamaño de la fuente
+    fontWeight: FontWeight.bold, // Grosor de la fuente
+    color: Colors.black, // Color del texto
+    letterSpacing: 1.2, // Espaciado entre letras
+    fontFamily: 'Roboto', // Fuente personalizada (si usas una)
+  );
+}
+
+TextStyle normalBoldText2() {
+  return const TextStyle(
+    fontSize: 16, // Tamaño de la fuente
     fontWeight: FontWeight.bold, // Grosor de la fuente
     color: Colors.black, // Color del texto
     letterSpacing: 1.2, // Espaciado entre letras

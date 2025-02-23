@@ -151,7 +151,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                           scrollDirection: Axis.horizontal,
                           children: state.petModels
                               .map((pet) => pet.filename != null
-                                  ? petContainer(pet)
+                                  ? petContainerNon(pet)
                                   : Container())
                               .toList()),
                     );
@@ -197,64 +197,136 @@ class _DashboardWidgetState extends State<DashboardWidget> {
     );
   }
 
-  Card petContainer(PetModel pet) {
-    return Card(
-      borderOnForeground: true,
-      child: Container(
-        padding: const EdgeInsets.all(6.0),
-        child: Column(
-          children: [
-            Flexible(
-              flex: 3,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: CachedNetworkImage(
-                  imageUrl: apiBaseURL + pet.path!,
-                  fit: BoxFit.cover,
-                  width: 120,
-                  height: 120,
+  GestureDetector petContainerNon(PetModel pet) {
+    return GestureDetector(
+      onTap: () => navigateToPet(pet),
+      child: Card(
+        borderOnForeground: true,
+        child: Container(
+          padding: const EdgeInsets.all(6.0),
+          child: Column(
+            children: [
+              Flexible(
+                flex: 3,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: CachedNetworkImage(
+                    imageUrl: apiBaseURL + pet.path!,
+                    fit: BoxFit.cover,
+                    width: 120,
+                    height: 120,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 8.0),
-            Flexible(
-              flex: 3,
-              child: Column(
-                children: [
-                  Text(
-                    pet.name,
-                    style: normalBoldText(),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Icon(Icons.location_city),
-                      SizedBox(
-                        width: 90,
-                        child: Text(
-                          "Leon, Guanajuato",
-                          style: normalTextMinum(),
+              const SizedBox(height: 5.0),
+              Flexible(
+                flex: 3,
+                child: Column(
+                  children: [
+                    Text(
+                      pet.name,
+                      style: normalBoldText(),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.location_city),
+                        SizedBox(
+                          width: 90,
+                          child: Text(
+                            "Leon, Guanajuato",
+                            style: normalTextMinum(),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Icon(Icons.timelapse),
-                      SizedBox(
-                        width: 90,
-                        child: Text(
-                          "${pet.age.toString()} year old",
-                          style: normalTextMinum(),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.timelapse),
+                        SizedBox(
+                          width: 90,
+                          child: Text(
+                            "${pet.age.toString()} year old",
+                            style: normalTextMinum(),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  GestureDetector petContainer(PetModel pet) {
+    return GestureDetector(
+      onTap: () => navigateToPet(pet),
+      child: Card(
+        borderOnForeground: true,
+        child: Container(
+          padding: const EdgeInsets.all(6.0),
+          child: Column(
+            children: [
+              Flexible(
+                flex: 3,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Hero(
+                    tag: pet.id,
+                    child: CachedNetworkImage(
+                      imageUrl: apiBaseURL + pet.path!,
+                      fit: BoxFit.cover,
+                      width: 120,
+                      height: 120,
+                    ),
                   ),
-                ],
+                ),
               ),
-            )
-          ],
+              const SizedBox(height: 5.0),
+              Flexible(
+                flex: 3,
+                child: Column(
+                  children: [
+                    Text(
+                      pet.name,
+                      style: normalBoldText(),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.location_city),
+                        SizedBox(
+                          width: 90,
+                          child: Text(
+                            "Leon, Guanajuato",
+                            style: normalTextMinum(),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.timelapse),
+                        SizedBox(
+                          width: 90,
+                          child: Text(
+                            "${pet.age.toString()} year old",
+                            style: normalTextMinum(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
