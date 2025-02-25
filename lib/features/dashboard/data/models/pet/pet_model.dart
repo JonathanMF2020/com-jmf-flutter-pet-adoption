@@ -19,6 +19,8 @@ class PetModel extends PetEntity {
       required super.path,
       required super.breed,
       required super.tags,
+      required super.gender,
+      required super.weight,
       required super.animal_type});
 
   factory PetModel.fromJson(Map<String, dynamic> json) =>

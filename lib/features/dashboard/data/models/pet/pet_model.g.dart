@@ -19,6 +19,8 @@ PetModel _$PetModelFromJson(Map<String, dynamic> json) => PetModel(
       tags: (json['tags'] as List<dynamic>)
           .map((e) => TagModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      gender: (json['gender'] as num).toInt(),
+      weight: (json['weight'] as num).toDouble(),
       animal_type: json['animal_type'] == null
           ? null
           : AnimalTypeModel.fromJson(
@@ -33,6 +35,8 @@ Map<String, dynamic> _$PetModelToJson(PetModel instance) => <String, dynamic>{
       'filename': instance.filename,
       'path': instance.path,
       'breed': instance.breed,
+      'gender': instance.gender,
+      'weight': instance.weight,
       'tags': instance.tags,
       'animal_type': instance.animal_type,
     };

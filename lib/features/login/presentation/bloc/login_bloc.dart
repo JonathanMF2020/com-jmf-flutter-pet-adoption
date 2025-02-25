@@ -26,7 +26,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       if (kDebugMode) {
         print("[Error] ${dataState.error.toString()}");
       }
-      emit(LoginError(dataState.error!.message!));
+      emit(LoginError(dataState.error.toString()));
     }
   }
 }

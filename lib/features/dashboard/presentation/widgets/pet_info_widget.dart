@@ -55,7 +55,7 @@ class _PetInfoWidgetState extends State<PetInfoWidget> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: CachedNetworkImage(
-                        imageUrl: apiImagesURL + widget.petModel.filename!,
+                        imageUrl: apiBaseURL + widget.petModel.path!,
                         height: 300,
                         width: MediaQuery.of(context).size.width - 16,
                         fit: BoxFit.cover,
@@ -85,10 +85,14 @@ class _PetInfoWidgetState extends State<PetInfoWidget> {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   alignment: WrapAlignment.center,
                   children: [
-                    createCat("Gender", "Female", AppColors.ageContainer),
+                    createCat(
+                        "Gender",
+                        widget.petModel.gender == 1 ? "Male" : "Female",
+                        AppColors.ageContainer),
                     createCat("Age", "${widget.petModel.age} Years",
                         AppColors.weightContainer),
-                    createCat("Gender", "2 LBS", AppColors.genderContainer),
+                    createCat("Gender", "${widget.petModel.weight} LBS",
+                        AppColors.genderContainer),
                   ],
                 ),
                 const SizedBox(height: 20.0),

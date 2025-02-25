@@ -35,7 +35,7 @@ class AnimalTypeBloc extends Bloc<AnimalTypeEvent, AnimalTypeState> {
         if (kDebugMode) {
           print("[Error] ${dataState.error.toString()}");
         }
-        emit(AnimalTypeError(dataState.error!.message!));
+        emit(AnimalTypeError(dataState.error!.toString()));
       }
     } on TokenException catch (e) {
       await logout();

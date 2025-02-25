@@ -33,7 +33,7 @@ class PetBloc extends Bloc<PetEvent, PetState> {
         if (kDebugMode) {
           print("[Error] ${dataState.error.toString()}");
         }
-        emit(PetError(dataState.error!.message!, 0));
+        emit(PetError(dataState.error!.toString(), 0));
       }
     } on TokenException catch (e) {
       await logout();

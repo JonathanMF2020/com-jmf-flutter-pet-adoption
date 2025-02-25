@@ -14,6 +14,8 @@ class AccountSuccess extends AccountState {
   AccountSuccess(this.list);
 }
 
+class AccountUnLoad extends AccountState {}
+
 class AccountError extends AccountState {
   final String error;
   AccountError(this.error);

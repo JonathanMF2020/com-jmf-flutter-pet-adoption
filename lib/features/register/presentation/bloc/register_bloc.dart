@@ -26,7 +26,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       if (kDebugMode) {
         print("[Error] ${dataState.error.toString()}");
       }
-      emit(RegisterError(dataState.error!.message!));
+      emit(RegisterError(dataState.error!.toString()));
     }
   }
 }

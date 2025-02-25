@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:petadoption/core/resources/data_state.dart';
 import 'package:petadoption/features/home/data/data_source/home_storage_service.dart';
 import 'package:petadoption/features/home/domain/repository/home_repository.dart';
@@ -9,6 +10,9 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<DataState<List<String>>> getAccount() async {
     final data = await _homeStorageService.getAccount();
+    if (data.isEmpty) {
+      return DataFailed(Exception("Ha ocurrido un error"));
+    }
     return DataSuccess(data);
   }
 }

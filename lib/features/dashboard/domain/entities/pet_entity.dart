@@ -15,6 +15,8 @@ class PetEntity extends Equatable {
       required this.path,
       required this.breed,
       required this.tags,
+      required this.gender,
+      required this.weight,
       required this.animal_type});
 
   final int id;
@@ -24,6 +26,8 @@ class PetEntity extends Equatable {
   final String? filename;
   final String? path;
   final BreedModel? breed;
+  final int gender;
+  final double weight;
   final List<TagModel> tags;
   final AnimalTypeModel? animal_type;
 

@@ -17,14 +17,12 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     emit(AccountLoadingService());
     final dataState = await getAccount();
     if (dataState is DataSuccess) {
-      emit(AccountSuccess(dataState.data!));
-    }
-
-    if (dataState is DataFailed) {
-      if (kDebugMode) {
-        print("[Error] ${dataState.error.toString()}");
+      if (dataState.data!.isEmpty) {
+        emit(AccountUnLoad());
       }
-      emit(AccountError(dataState.error!.message!));
+      emit(AccountSuccess(dataState.data!));
+    } else {
+      emit(AccountUnLoad());
     }
   }
 }

@@ -24,7 +24,7 @@ class ConfigBloc extends Bloc<ConfigEvent, ConfigState> {
       if (kDebugMode) {
         print("[Error] ${dataState.error.toString()}");
       }
-      emit(ConfigError(dataState.error!.message!));
+      emit(ConfigError(dataState.error!.toString()));
     }
   }
 }
