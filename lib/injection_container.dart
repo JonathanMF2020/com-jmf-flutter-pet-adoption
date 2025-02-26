@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:petadoption/config/flavors/app_config.dart';
 import 'package:petadoption/core/dio/dio_interceptor.dart';
 import 'package:petadoption/features/dashboard/data/data_source/dashboard_api_service.dart';
 import 'package:petadoption/features/dashboard/data/repository/dashboard_repository_impl.dart';
@@ -31,7 +32,7 @@ import 'package:petadoption/features/register/presentation/bloc/register_bloc.da
 final sl = GetIt.instance;
 
 Future<void> initializeDependencies() async {
-  final dio = Dio();
+  final dio = Dio(BaseOptions(baseUrl: AppConfig.shared.apiBaseURL));
   dio.interceptors.add(DioInterceptor());
   sl.registerSingleton<Dio>(dio);
 

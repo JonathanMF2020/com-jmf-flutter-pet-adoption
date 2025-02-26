@@ -16,6 +16,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   retrofit: ^4.4.2
   cached_network_image: ^3.4.1
+  flutter_dotenv: ^5.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -32,6 +33,7 @@ flutter:
   assets:
   - assets/images/register-image.png
   - assets/images/cat.png
+  - .env
   - assets/images/dog.jpg
   - assets/images/conejo.jpg
   - assets/images/gati.jpg

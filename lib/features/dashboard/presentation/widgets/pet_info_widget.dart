@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:petadoption/config/colors/app_colors.dart';
+import 'package:petadoption/config/flavors/app_config.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
-import 'package:petadoption/core/constants/constants.dart';
 import 'package:petadoption/features/dashboard/data/models/pet/pet_model.dart';
 
 class PetInfoWidget extends StatefulWidget {
@@ -55,7 +55,8 @@ class _PetInfoWidgetState extends State<PetInfoWidget> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: CachedNetworkImage(
-                        imageUrl: apiBaseURL + widget.petModel.path!,
+                        imageUrl:
+                            AppConfig.shared.apiBaseURL + widget.petModel.path!,
                         height: 300,
                         width: MediaQuery.of(context).size.width - 16,
                         fit: BoxFit.cover,
