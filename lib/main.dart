@@ -6,7 +6,6 @@ import 'package:petadoption/config/routes/routes.dart';
 import 'package:petadoption/core/bloc/simple_bloc_observer.dart';
 import 'package:petadoption/features/home/presentation/pages/home_pages.dart';
 import 'package:petadoption/injection_container.dart';
-
 import 'config/theme/app_theme.dart';
 
 Future<void> main() async {
