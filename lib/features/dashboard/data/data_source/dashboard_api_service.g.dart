@@ -72,7 +72,7 @@ class _DashboardApiService implements DashboardApiService {
     )
         .compose(
           _dio.options,
-          'pets',
+          'adoptions/pets',
           queryParameters: queryParameters,
           data: _data,
         )

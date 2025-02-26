@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:equatable/equatable.dart';
+import 'package:petadoption/features/dashboard/data/models/adoption/adoption_model.dart';
 import 'package:petadoption/features/dashboard/data/models/animal_type/animal_type_model.dart';
 import 'package:petadoption/features/dashboard/data/models/breed/breed_model.dart';
 import 'package:petadoption/features/dashboard/data/models/tag/tag_model.dart';
@@ -17,7 +18,8 @@ class PetEntity extends Equatable {
       required this.tags,
       required this.gender,
       required this.weight,
-      required this.animal_type});
+      required this.animal_type,
+      required this.adoption});
 
   final int id;
   final String name;
@@ -28,11 +30,22 @@ class PetEntity extends Equatable {
   final BreedModel? breed;
   final int gender;
   final double weight;
-  final List<TagModel> tags;
+  final List<TagModel>? tags;
   final AnimalTypeModel? animal_type;
+  final AdoptionModel? adoption;
 
   @override
   List<Object?> get props {
-    return [id, name, age, description, filename, path, breed, animal_type];
+    return [
+      id,
+      name,
+      age,
+      description,
+      filename,
+      path,
+      breed,
+      animal_type,
+      adoption
+    ];
   }
 }

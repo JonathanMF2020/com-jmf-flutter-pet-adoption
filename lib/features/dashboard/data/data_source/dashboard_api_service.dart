@@ -14,7 +14,7 @@ abstract class DashboardApiService {
   @GET('auth/login')
   Future<HttpResponse<List<ConfigModel>>> getConfigurations();
 
-  @GET('pets')
+  @GET('adoptions/pets')
   Future<HttpResponse<List<PetModel>>> getPets();
 
   @GET('animal_type')

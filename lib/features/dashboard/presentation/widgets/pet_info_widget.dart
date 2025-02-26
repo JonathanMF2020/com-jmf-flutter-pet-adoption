@@ -75,7 +75,7 @@ class _PetInfoWidgetState extends State<PetInfoWidget> {
                     ),
                     const SizedBox(width: 10.0),
                     Text(
-                      "Leon Guanajuato",
+                      widget.petModel.adoption!.city,
                       style: subtitleTextGrey(),
                     ),
                   ],
