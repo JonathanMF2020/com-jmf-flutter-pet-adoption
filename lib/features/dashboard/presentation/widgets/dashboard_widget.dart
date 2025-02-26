@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:petadoption/config/flavors/app_config.dart';
 import 'package:petadoption/config/theme/app_theme.dart';
-import 'package:petadoption/core/constants/constants.dart';
 import 'package:petadoption/core/constants/route_constants.dart';
 import 'package:petadoption/core/widgets/util_widgets.dart';
 import 'package:petadoption/features/dashboard/data/models/animal_type/animal_type_model.dart';
@@ -185,7 +185,8 @@ class _DashboardWidgetState extends State<DashboardWidget> {
         alignment: Alignment.center,
         children: [
           CachedNetworkImage(
-              imageUrl: apiBaseURL + animalType.path!, fit: BoxFit.fill),
+              imageUrl: AppConfig.shared.apiBaseURL + animalType.path!,
+              fit: BoxFit.fill),
           Align(
               alignment: Alignment.center,
               child: Text(
@@ -211,7 +212,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: CachedNetworkImage(
-                    imageUrl: apiBaseURL + pet.path!,
+                    imageUrl: AppConfig.shared.apiBaseURL + pet.path!,
                     fit: BoxFit.cover,
                     width: 120,
                     height: 120,
@@ -279,7 +280,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                   child: Hero(
                     tag: pet.id,
                     child: CachedNetworkImage(
-                      imageUrl: apiBaseURL + pet.path!,
+                      imageUrl: AppConfig.shared.apiBaseURL + pet.path!,
                       fit: BoxFit.cover,
                       width: 120,
                       height: 120,

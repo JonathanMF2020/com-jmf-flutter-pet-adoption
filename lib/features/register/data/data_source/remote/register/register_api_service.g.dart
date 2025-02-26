@@ -13,9 +13,7 @@ class _RegisterApiService implements RegisterApiService {
     this._dio, {
     this.baseUrl,
     this.errorLogger,
-  }) {
-    baseUrl ??= 'http://192.168.1.12:8000/';
-  }
+  });
 
   final Dio _dio;
 
